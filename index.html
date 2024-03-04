@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <!-- dont forget to link CSS -->
+    <title>Show Popup After Site Loads</title>
+  </head>
+
+  <body>
+    <div class="content">
+      <h1>Hello World</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur
+        provident repudiandae, iusto ipsum sapiente enim in accusamus nesciunt
+        obcaecati temporibus eius fuga voluptatibus adipisci iure libero!
+        Architecto nisi eligendi modi doloribus illum. Voluptatem repellat
+        inventore, commodi illo quos magnam, dicta amet quis culpa reprehenderit
+        recusandae ea dolor vitae praesentium veniam quia esse sed dolorum quod
+        animi? Quibusdam nemo aut, atque autem facilis sequi et corrupti
+        voluptatem minus officiis ducimus. Recusandae quisquam nihil quis dolor
+        corporis voluptatibus optio, magni distinctio accusamus provident non!
+        Neque sapiente laborum perspiciatis officiis ex deserunt maiores, non
+        eum sint soluta, quasi eaque repellat, atque adipisci voluptatem!
+      </p>
+      <br />
+      <br />
+      <h2>Dummy Title</h2>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat optio
+        odit id laboriosam architecto, aspernatur ipsam quae reiciendis itaque
+        impedit ad quisquam aperiam? Totam, alias corporis eius similique
+        dignissimos nemo explicabo veniam harum quas quod, id consequuntur
+        quibusdam placeat ipsam. Fugit maxime harum eveniet. Aut, fuga dolorum.
+        Obcaecati ea vel nobis nulla sunt provident quasi facilis eum iusto
+        ipsum omnis voluptatum minus, quidem repellendus consectetur tempore
+        accusantium, in rerum consequuntur veniam exercitationem odio officia?
+        Maiores, dolor quia, atque quasi sunt rerum nam enim alias rem incidunt
+        aperiam quis veritatis perspiciatis corrupti iure similique aliquid eum
+        illum pariatur dignissimos possimus fugit vero? Vitae, repellat?
+        Voluptas accusantium, porro eum reiciendis quibusdam nihil sit rerum
+        natus maiores at iusto vero ad, a distinctio cum veritatis optio
+        consectetur ab esse. Atque repudiandae, blanditiis necessitatibus
+        tempore, optio voluptas nisi dolorem culpa soluta dolorum distinctio
+        tempora unde mollitia ipsa quam. Fugit veritatis eligendi nesciunt,
+        laudantium qui doloremque magnam! Consectetur rem quas illum quibusdam
+        blanditiis facilis quae quaerat voluptatem exercitationem natus aliquam
+        iste eum, debitis pariatur inventore fugiat rerum officiis maxime
+        possimus necessitatibus ipsum velit id consequatur hic. Minus
+        dignissimos delectus odio explicabo sequi rem est numquam ea, nostrum
+        itaque excepturi cupiditate non maxime, dolores ipsam quo.
+      </p>
+      <!-- Im just writing some dummy info just for demonstration porpuses here. You can add real content -->
+    </div>
+    <div class="popup" id="">
+      <div class="popup-content">
+        <div class="grid lg:grid-cols-2 gap-2">
+          <div class="lg:block hidden">
+            <img
+              src="image/section-itsupport.png"
+              alt="hello"
+              class="lg:w-full lg:h-full"
+            />
+          </div>
+          <div class="">
+            <span id="close" class="text-white" onclick="myFunction()"
+              ><h1 class="font-extrabold">X</h1></span
+            >
+
+            <div
+              class="my-3 lg:bg-[url('')] bg-[url('image/section-itsupport.png')] bg-center bg-contain bg-no-repeat border-2 rounded-xl p-3"
+              style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px"
+            >
+              <h2 class="text-xl font-bold mb-5">
+                Subscribe to our free E-mailer to stay on top of the industry
+                news and insights.
+              </h2>
+              <form action="">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Enter your E-mail"
+                  class="py-2 px-2 border-2 border-black w-full opacity-75 rounded-lg"
+                />
+                <div class="flex items-start my-3 gap-2 text-justify">
+                  <input type="checkbox" class="mt-0.5" />
+                  <div>
+                    <p class="text-xs">
+                      I agree to receive your newsletters and to terms and
+                      conditions.
+                    </p>
+                    <p class="text-xs">
+                      You may unsubscribe at any time using the link newsletter.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="button px-4 rounded-lg my-3 py-2 bg-sky-950 text-white font-semibold"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const popup = document.querySelector(".popup");
+      // const x = document.querySelector('.close')
+
+    //   window.sessionStorage.setItem("modalOpened", true);
+     
+
+      // x.addEventListener('click', () => {
+      //     popup.classList.remove('showPopup');
+      //     popup.childNodes[1].classList.remove('showPopup');
+      // })
+
+      function myFunction() {
+        popup.classList.remove("showPopup");
+        popup.childNodes[1].classList.remove("showPopup");
+      }
+      console.log(myFunction());
+      
+      if (!sessionStorage.getItem("showPopup")) {
+        // If not, set the popupOpened key to true and execute your code here
+        sessionStorage.setItem("showPopup", true);
+        window.addEventListener(
+        "load",
+        () =>setTimeout(() => {
+          popup.classList.add("showPopup");
+          popup.childNodes[1].classList.add("showPopup");
+        }, 5000)
+      );
+
+        // Your code here
+        console.log("This is the first time the popup has been opened!");
+      } else {
+        // If yes, do nothing or execute some other code
+        console.log("The popup has been opened before.");
+      }
+    </script>
+  </body>
+</html>
